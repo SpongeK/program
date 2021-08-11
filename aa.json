@@ -1,0 +1,17 @@
+{"widgetName":"我的订单楼层",
+"widgetSourceCode":"[{\"sourceType\":1,\"sourceUrl\":\"https://git.jd.com/wjfe/wdb-wx.git\"}]",
+"widgetEnglishName":"order-floor-cmp",
+"widgetResourceCode":"WIDGET_MYSELF_ORDER-FLOOR-CMP_OTHER_GJXIWHW1",
+"id":"447","uuid":"78fffe30-2fb9-11eb-986e-a99e63b11144",
+"version":"1.0","previewImg":"http://storage.360buyimg.com/jlimage/16063195949071084292290.jpg","setting":{}}
+
+{"widgetName": "我的业绩",
+    "widgetSourceCode": "[{\"sourceType\":1,\"sourceUrl\":\"https://git.jd.com/wjfe/wdb-wx.git\"}]",
+    "widgetEnglishName": "my-achievement-cmp",
+    "widgetResourceCode": "WIDGET_MYSELF_MY-ACHIEVEMENT-CMP_OTHER_XQTMTC5W",
+    "uuid": "77a80f50-2fb9-11eb-986e-a99e63b11144",
+    "version": "1.0",
+    "setting": {},
+    "id": "446",
+    "previewImg": "http://storage.360buyimg.com/jlimage/16063194898941084292290.jpg"
+  },

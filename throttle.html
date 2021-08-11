@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>点击次数：<span id="num">0</span></div>
+    <button id="btn">点击增加</button>
+</body>
+<script>
+    window.onload = function(){
+        let count = 0
+        var spanEle = document.getElementById('num')
+        var btnEle = document.getElementById('btn')
+        const newClick = throttle(handleClick, 2000)
+        btn.onclick = newClick(e)
+        function handleClick(e){
+            spanEle.innerHTML = count++
+            console.log('btn点击', e)
+        }
+        // 节流
+        function throttle(fn, wait){
+            let lastTime = 0
+            return function(){
+                var nowTime = new Date().getTime()
+                if(nowTime  - lastTime > wait){
+                    fn.apply(this, arguments)
+                    lastTime = nowTime
+                }
+            }
+        }
+    }
+    
+
+
+</script>
+</html>
