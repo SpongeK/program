@@ -12,23 +12,52 @@
 <script>
     window.onload = function(){
         const inputEle = document.getElementById('input')
-        inputEle.oninput = debounce(handleInput, 2000)
+        inputEle.oninput = throttle(handleInput, 2000)
 
         function handleInput(e){
             console.log('input: ' + e.target.value)
         }
+
         function debounce(fn, wait){
-            let timer = null
+            var timer = null
             return function(){
                 var _this = this
                 var args = arguments
                 if(timer){
-                    clearInterval(timer)
-                }
+                    clearTimeout(timer)
+                } 
                 timer = setTimeout(function(){
                     fn.apply(_this, args)
                 }, wait)
+            }
+        }
 
+        // 使用定时器实现节流
+        function throttleByTimer(fn, wait){
+            var flag = false
+            return function(){
+                var _this = this
+                var args = arguments
+                if(flag){
+                    return
+                }
+                flag = true
+                setTimeout(function(){
+                    fn.apply(_this, args)
+                    flag = false
+                }, wait)
+            }
+        }
+        
+        // 使用时间差实现节流
+        function throttle(fn, wait){
+            var lastTime = 0
+            return function(){
+                var nowTime = new Date().getTime()
+                if(lastTime + wait < nowTime){
+                    fn.apply(this, arguments)
+                    lastTime = nowTime
+                }
             }
         }
     }
