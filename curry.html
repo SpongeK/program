@@ -14,6 +14,38 @@
         console.log('arg', a, b, c, d)
         return a+b+c+d
     }
+    function FixedParamsCurryFunction(fn, ...args){
+        return function(){
+            var params = args.concat([].slice.call(arguments))
+            return fn.apply(this, params)
+        }
+    }
+
+    var bfn = CurryFunction(add)
+    /**
+     * bfn = function(){
+     *  var args = arguments....
+     * }
+     */
+    console.log(bfn(1)(2,3)(4))
+    console.log(bfn(1, 2, 3)(4))
+    console.log(bfn(1, 2)(3)(4))
+    function CurryFunction(fn, len){
+        var fnLength = len || fn.length
+        return function(){
+            var args = arguments
+            if(args.length >= fnLength){
+                return fn.apply(this, args)
+            }else{
+                return CurryFunction(FixedParamsCurryFunction(fn, ...args), fnLength - args.length)
+            }
+        }
+    }
+
+
+
+
+    
     function FixedParamsCurryFn(fn, ...args){
         // var args = [].slice.apply(arguments, 0)
         // var fn = args[0]
@@ -44,7 +76,7 @@
             }
         }
     }
-    var bfn = Curry(add)
+    // var bfn = Curry(add)
     // bfn(1)(2,3)(4)
     // bfn(1, 2, 3)(4)
     // bfn(1, 2)(3)(4)
